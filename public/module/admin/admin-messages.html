@@ -1,0 +1,17 @@
+<h1>Messages</h1>
+<div ng-controller='adminMessageCtrl as admin'>    
+<div class="table-responsive">
+<table class="table table-bordered table-hover table-condensed">
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Message</th>
+      </tr>
+      <tr ng-repeat='msg in admin.messages'>
+      	<td>{{msg.name}}</td>
+        <td>{{msg.email}}</td>
+        <td>{{msg.message}}</td>
+      </tr>
+ </table>
+ </div>
+ </div>

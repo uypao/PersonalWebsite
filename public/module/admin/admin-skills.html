@@ -1,0 +1,43 @@
+<h1>Skills</h1>
+<div ng-controller='adminSkillsCtrl as skills'>
+<div class="table-responsive">
+<table class="table table-bordered table-hover table-condensed ">
+  	<tr style="font-weight: bold">
+      <td>Technology</td>
+      <td>Percentage</td>
+      <td>Action</td>
+    </tr>
+    <tr ng-repeat="skls in skills.techSkills">
+    	<td>
+    	<span editable-text='skls.technology' e-name='technology' e-form="rowform">
+    	{{skls.technology}}
+    	</span>
+    	</td>
+    	<td>
+		<span editable-text='skls.percentage' e-name='percentage' e-form="rowform">
+    	{{skls.percentage}}
+    	</td>
+
+    	 <td>
+        <!-- form -->
+        <form editable-form name="rowform" onbeforesave="skills.saveSkill($data, skls._id)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="skills.newSkill == skls">
+          <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
+            <i class="fa fa-check"></i>
+          </button>
+          <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
+            <i class="fa fa-times"></i>
+          </button>
+        </form>
+        <div class="buttons" ng-show="!rowform.$visible">
+          <button class="btn btn-primary" ng-click="rowform.$show()"><i class="fa fa-pencil"></i></button>
+          <button class="btn btn-danger" ng-click="skills.removeSkill($index)"><i class="fa fa-trash"></i></button>
+        </div>  
+      </td>
+    </tr>
+</table>
+</div>
+<button class="btn btn-default" ng-click="skills.addSkills()">Add Skill</button>
+ </div>
+
+
+
